@@ -27,7 +27,7 @@ export class AppComponent {
   constructor() {
     this.username = prompt('Ingresa tu nombre de usuario') || '';
     if (this.username) {
-      this.socket = new WebSocket('ws://25.7.93.54:3000');
+      this.socket = new WebSocket('ws://25.12.106.62:3000');
       this.socket.onopen = () => {
         console.log('Conexión establecida con el servidor.');
       };
