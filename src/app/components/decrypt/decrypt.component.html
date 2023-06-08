@@ -1,0 +1,23 @@
+<mat-card class="container border " style="margin-top: 5%; padding:20px;">
+
+    <mat-card-title>Desencripción</mat-card-title>
+    <p></p>
+    <mat-card-content>
+        <form  [formGroup]="decryptForm">
+            <p>
+                <mat-form-field appearance="outline" [style.width.%]=100>
+                    <mat-label>Mensaje</mat-label>
+                    <input  formControlName="encryptedMessage" matInput placeholder="Ingresa aqui el mensaje a desencriptar">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" [style.width.%]=100>
+                    <mat-label>Clave</mat-label>
+                    <input  formControlName="key" matInput placeholder="Ingresa la clave secreta">
+                    
+                </mat-form-field>
+            </p>
+            <button mat-raised-button color="primary"  (click)="decrypt()" [disabled]="decryptForm.invalid"><mat-icon>lock_open</mat-icon>Desencriptar</button>
+        </form>
+    </mat-card-content>
+</mat-card>
