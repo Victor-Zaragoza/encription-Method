@@ -11,7 +11,19 @@ export class EncryptDecryptService {
   vectorMessage:string[] = []
   vectorClave :string[] = []
   vectorEncrypted :string[] = []
+
+
+  vectorDecrypted: string[] = []
+
+
+  restart(){
+    this.vectorClave = []
+    this.vectorEncrypted = []
+    this.vectorMessage = []
+    this.vectorDecrypted = []
+  }
   encrypt(message: string, clave: string): string {
+    this.restart()
     const mensajeNormalizado = message.toUpperCase();
     const claveNormalizada = clave.toUpperCase().replace(/[^A-Z]/g, '');
     const claveRepetida = claveNormalizada.repeat(Math.ceil(mensajeNormalizado.length / claveNormalizada.length)).slice(0, mensajeNormalizado.length);
@@ -45,6 +57,7 @@ export class EncryptDecryptService {
   }
 
   decrypt(encryptedMessage: string, clave: string): string {
+    this.restart()
     const mensajeCifradoNormalizado = encryptedMessage.toUpperCase();
     const claveNormalizada = clave.toUpperCase().replace(/[^A-Z]/g, '');
     const claveRepetida = claveNormalizada.repeat(Math.ceil(mensajeCifradoNormalizado.length / claveNormalizada.length)).slice(0, mensajeCifradoNormalizado.length);
@@ -54,6 +67,8 @@ export class EncryptDecryptService {
     for (let i = 0; i < mensajeCifradoNormalizado.length; i++) {
       const letraCifrada = mensajeCifradoNormalizado[i];
       const letraClave = claveRepetida[i];
+      this.vectorClave.push(letraClave)
+      this.vectorEncrypted.push(letraCifrada);
 
       if (letraCifrada.match(/[A-Z]/)) {
         const valorCifrada = letraCifrada.charCodeAt(0) - 65;
@@ -63,8 +78,10 @@ export class EncryptDecryptService {
 
         const letraDescifrada = String.fromCharCode(valorDescifrado + 65);
         mensajeDescifrado += letraDescifrada;
+        this.vectorDecrypted.push(letraDescifrada)
       } else {
         mensajeDescifrado += letraCifrada;
+        this.vectorDecrypted.push(letraCifrada);
       }
     }
 

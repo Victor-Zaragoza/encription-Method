@@ -21,3 +21,31 @@
         </form>
     </mat-card-content>
 </mat-card>
+
+
+<div class="container" style="margin-top: 3%;" *ngIf="message.length!=0">
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Mensaje desencriptado
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{message}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Partiendo del mensaje  encriptado <b>"{{encryptedMessage}}" </b> con la clave <b>"{{key}}"</b>, los pasos para
+                llegar al mensaje desencriptado <b>"{{message}}"</b> fueron:</p>
+            <ul class="list-group">
+
+                <li *ngFor="let char of vectorMessage; index as i" @fadeIn
+                    class="list-group-item d-flex justify-content-between align-items-center">
+                    Letra {{i+1}}: <b>'{{vectorEncrypted[i]}}'</b> + Clave: <b>'{{vectorClave[i]}}'</b> = <b>{{char}}</b>
+                    <span class="badge bg-primary rounded-pill">{{i+1}}</span>
+                </li>
+            </ul>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</div>
