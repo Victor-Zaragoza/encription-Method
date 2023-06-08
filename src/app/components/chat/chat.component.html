@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="messages mat-elevation-z5">
+        <div class="messages-header">
+            <h2>Chat<button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon *ngIf="showEncrypted; else showNotEncrypted" (click)="changeShowing()">lock</mat-icon>
+                    <ng-template #showNotEncrypted>
+                        <mat-icon (click)="changeShowing()">lock_open</mat-icon>
+                    </ng-template>
+                </button></h2>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="chat-area">
+            <ng-container>
+                <ng-container *ngIf="messages">
+                    <div class="chat-bubble-container" [ngClass]="{ sender: message.username === username }"
+                        *ngFor="let message of messages">
+                        <div class="chat-bubble">
+                            <p *ngIf="message.username!=username"> <b>{{message.username}}</b></p>
+                            <ng-container *ngIf="showEncrypted; else showNotEncryptedText"> {{ message.message }}</ng-container>
+                            <ng-template #showNotEncryptedText>
+                                {{ message.decrypted }}
+                            </ng-template>
+
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <div #endOfChat></div>
+        </div>
+        <div class="input-area">
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Enter your message..." [(ngModel)]="inputMessage"
+                    (keydown.enter)="sendMessage()" />
+                <button mat-icon-button matSuffix (click)="sendMessage()">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+
+<!-- modal proceso de encriptacion -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Pasos de la encripción del mensaje</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+
+                    <li *ngFor="let char of vectorMessage; index as i" @fadeIn
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        Letra {{i+1}}: <b>'{{char}}'</b> + Clave: <b>'{{vectorClave[i]}}'</b> =
+                        <b>{{vectorEncrypted[i]}}</b>
+                        <span class="badge bg-primary rounded-pill">{{i+1}}</span>
+                    </li>
+                </ul>
+                <br>
+                Por tanto se envió el mensaje encriptado <b>"{{encryptedMessage}}"</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal proceso de desencriptacion -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleDecrypt}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Pasos de la desencriptación del mensaje</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+
+                    <li *ngFor="let char of vectorMessage; index as i" @fadeIn
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        Letra {{i+1}}: <b>'{{vectorEncrypted[i]}}'</b> - Clave: <b>'{{vectorClave[i]}}'</b> =
+                        <b>{{char}}</b>
+                        <span class="badge bg-primary rounded-pill">{{i+1}}</span>
+                    </li>
+                </ul>
+                <br>
+                Por tanto se recibió el mensaje <b>"{{decryptedMessage}}"</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopupDecrypt()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

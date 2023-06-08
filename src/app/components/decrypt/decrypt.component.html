@@ -40,7 +40,7 @@
 
                 <li *ngFor="let char of vectorMessage; index as i" @fadeIn
                     class="list-group-item d-flex justify-content-between align-items-center">
-                    Letra {{i+1}}: <b>'{{vectorEncrypted[i]}}'</b> + Clave: <b>'{{vectorClave[i]}}'</b> = <b>{{char}}</b>
+                    Letra {{i+1}}: <b>'{{vectorEncrypted[i]}}'</b> - Clave: <b>'{{vectorClave[i]}}'</b> = <b>{{char}}</b>
                     <span class="badge bg-primary rounded-pill">{{i+1}}</span>
                 </li>
             </ul>

@@ -7,19 +7,22 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { AngularMaterialModule } from './angular-material.module';
 import { EncryptComponent } from './components/encrypt/encrypt.component';
 import { DecryptComponent } from './components/decrypt/decrypt.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EncryptComponent,
-    DecryptComponent
+    DecryptComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     AngularMaterialModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule
   ],
   providers: [],

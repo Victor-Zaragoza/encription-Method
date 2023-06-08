@@ -46,7 +46,7 @@ export class DecryptComponent implements OnInit {
      this.vectorEncrypted = this.service.vectorEncrypted;
      this.vectorClave = this.service.vectorClave;
      this.vectorMessage = this.service.vectorDecrypted;
-     alert(decryptedMessage)
+   
    }
 
 }

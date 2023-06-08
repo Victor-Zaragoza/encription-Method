@@ -1,0 +1,384 @@
+b {
+  color: #3f51b5;
+}
+.container {
+    display: flex;
+    height: calc(100vh - 120px);
+  
+    > .chat-list {
+        width: 40%;
+        margin: 16px;
+        background: #ffffff;
+        border-radius: 16px;
+  
+        overflow: auto;
+        .chat-title {
+  
+            display: flex;
+            justify-content: space-between;
+  
+            .chat-name {
+                font-weight: 500;
+            }
+  
+            .chat-date {
+                font-size: 0.7rem;
+                color: rgba(0,0,0,0.7)
+            }
+            
+        }
+  
+        .search-input {
+            margin: 24px;
+        }
+    }
+  
+    > .messages {
+        width: 100%;
+        padding: 24px;
+        margin: 16px;
+        margin-left: 8px;
+        border-radius: 16px;
+        background: rgba(255, 247, 247, 0.05);
+  
+        .messages-header {
+            display: flex;
+            margin-bottom: 8px;
+  
+             > img {
+                 border-radius: 50%;
+                 object-fit: cover;
+                 margin-right: 16px;
+                 height: 35px;
+                 width: 35px;
+             }
+  
+             > h2 {
+                margin: 0;
+             }
+        }
+  
+        .chat-area {
+            height: calc(100vh - 320px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+  
+            overflow: auto;
+  
+            > :first-child {
+                margin-top: auto;
+            }
+  
+            .chat-bubble-container {
+  
+                display: flex;
+                width: 100%;
+                justify-content: flex-start;
+  
+                > .chat-bubble {
+                    background: rgb(225, 214, 214);
+                    padding-top: 8px;
+                    padding-bottom: 18px;
+                    padding-left: 8px;
+                    padding-right: 100px;
+                    margin-bottom: 16px;
+                    border-radius: 8px;
+                    width: fit-content;
+  
+                    position: relative;
+  
+                    > .chat-time {
+                        position: absolute;
+                        bottom: 2px;
+                        right: 8px;
+                        font-size: 0.7rem;
+                     
+                    }
+                }
+                
+            }
+  
+            .chat-bubble-container.sender {
+                justify-content: flex-end;
+                color: white !important;
+                
+                > .chat-bubble {
+                    background: linear-gradient(330deg, rgb(38, 118, 229) 64%, rgba(94, 23, 235, 1) 94%);
+                    color: white !important;
+                }
+                
+            }
+  
+        }
+  
+        .input-area {
+            padding-top: 16px;
+            padding-bottom: 8px;
+        }
+    }
+  }
+  .sender{
+      color: white;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+  
+  /* the loader */
+  
+  .load {
+      margin: 150px auto;
+      width: 100px;
+      height: 100px;
+      /** height is required as absolute value **/
+      background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+      border-radius: 100px;
+      position:relative;
+      animation: pulse 2000ms linear infinite;
+                
+    
+    }
+    
+    .xd{
+      height: calc(100vh - 150px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .load {
+      margin: 150px auto;
+      width: 100px;
+      height: 100px;
+      /** height is required as absolute value **/
+      background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+      border-radius: 100px;
+      position:relative;
+      animation: pulse 2000ms linear infinite;
+      -webkit-animation: pulse 2000ms linear infinite;
+      -moz-animation: pulse 2000ms linear infinite;
+    }
+    
+    .load i{
+      position:absolute;
+      top:28px;
+      left:24%;
+      color:white;
+      text-shadow:-1px -1px #333;
+    }
+    .load mat-icon {
+      position:absolute;
+      top:28px;
+      left:24%;
+      color:white;
+      text-shadow:-1px -1px #333;
+    }
+    .load:after,
+    .load:before {
+      display: inline-block;
+      margin: auto;
+      position: absolute;
+      content: "";
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+    }
+    
+    .load:after {
+      z-index: -100;
+      -webkit-animation: outer-ripple 2000ms linear infinite;
+      -moz-animation: outer-ripple 2000ms linear infinite;
+      animation: outer-ripple 2000ms linear infinite;
+    }
+    
+    .load:before {
+      z-index: -200;
+      -webkit-animation: inner-ripple 2000ms linear infinite;
+      -moz-animation: inner-ripple 2000ms linear infinite;
+      animation: inner-ripple 2000ms linear infinite;
+    }
+    /* outer ripple */
+    
+    
+    @keyframes pulse{
+      0% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      10% {
+        transform: scale(1.1);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(0.9);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+    }
+    
+    @-moz-keyframes pulse{
+      0% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      10% {
+        transform: scale(1.1);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(0.9);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+    }
+    
+    @-webkit-keyframes pulse{
+      0% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      10% {
+        transform: scale(1.1);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(0.9);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+    }
+    
+    
+    @keyframes outer-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      80% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+    
+    @-webkit-keyframes outer-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      80% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+    
+    @-moz-keyframes outer-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      80% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+    /* inner ripple */
+    
+    @keyframes inner-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      30% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(2.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+    
+    @-webkit-keyframes inner-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      30% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(2.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+    
+    @-moz-keyframes inner-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      30% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(2.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+                  
+            

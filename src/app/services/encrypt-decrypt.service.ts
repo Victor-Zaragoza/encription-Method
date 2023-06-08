@@ -12,6 +12,7 @@ export class EncryptDecryptService {
   vectorClave :string[] = []
   vectorEncrypted :string[] = []
 
+  keyForChat:string = "Hello world"
 
   vectorDecrypted: string[] = []
 
